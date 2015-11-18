@@ -17,10 +17,29 @@
 </h3>
 
 <h4>
-  <div class="all-task-lists">
+  <div class="links">
     <% if @links %>
       <% @links.map do |link| %>
-        <%= link_to link.title, user_link_path(current_user, link) %> <br/>
+        <div id="link">
+          <%= link_to link.title,
+                      link.url,
+                      data: {id: link.id},
+                      class: current_link_status(link)%>
+          <% if link.status %>
+            <%= link_to "Make Read", user_links_path(current_user),
+                        method: :patch,
+                        id: "makeRead",
+                        class: "btn btn-default",
+                        remote: true %>
+          <% else %>
+            <%= link_to "Make Unread", user_links_path(current_user),
+                        method: :patch,
+                        id: "makeUnread",
+                        class: "btn btn-default",
+                        remote: true %>
+          <% end %>
+        </div>
+        <br/>
       <% end %>
     <% end %>
   </div>

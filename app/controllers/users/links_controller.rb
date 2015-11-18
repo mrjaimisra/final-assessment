@@ -1,12 +1,13 @@
 class Users::LinksController < Users::UsersController
   before_action :current_link, :authorize!, except: [:index, :new, :create]
+  respond_to :html, :js
 
   def index
     @user = User.find_by(params[:id])
     @links = @user.links
     @link = Link.new
   end
-
+  
   def create
     @user = User.find_by(params[:id])
     @links = @user.links
@@ -20,6 +21,30 @@ class Users::LinksController < Users::UsersController
     end
   end
 
+  def update
+    @link = current_link
+    if current_link.update_attributes(link_params)
+      redirect_to user_links_path(current_user)
+    else
+      flash.now[:danger] = "Update failed, please enter valid information"
+      render :edit
+    end
+  end
+
+  def read
+    @link = Link.new
+    current_link.update_attribute(:status, true)
+    current_link.save
+    render :index
+  end
+
+  def unread
+    @link = Link.new
+    current_link.update_attribute(:status, false)
+    current_link.save
+    render :index
+  end
+
   private
 
   def link_params
@@ -31,6 +56,6 @@ class Users::LinksController < Users::UsersController
   end
 
   def current_link
-    @current_link = List.find_by(id: params[:id])
+    @current_link = Link.find_by(id: params[:id])
   end
 end

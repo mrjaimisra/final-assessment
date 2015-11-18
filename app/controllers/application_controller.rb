@@ -3,10 +3,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  helper_method :current_user, :authorize!
+  helper_method :current_user,
+                :current_link_status
+  :authorize!
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def current_link_status(link)
+    if link.status
+      "read"
+    else
+      "unread"
+    end
   end
 
   def authorize!
