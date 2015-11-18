@@ -9,13 +9,13 @@ class SessionsController < ApplicationController
       redirect_to user_links_path(current_user)
       flash[:success] = "#{@user.username} logged in."
     else
-      redirect_to login_path
+      redirect_to signin_path
       flash[:danger] = "Invalid login credentials."
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to signin_path
   end
 end

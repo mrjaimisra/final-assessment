@@ -2,7 +2,7 @@
   <div class="container">
     <% if current_user %>
       <%= current_user.username %> |
-      <%= link_to "All Lists", user_links_path(current_user) %> |
+      <%= link_to "All Links", user_links_path(current_user) %> |
       <%= link_to "Sign out", signout_path, method: :delete %>
       <br/>
     <% else %>
