@@ -1,0 +1,11 @@
+<h1>Edit <%= @link.title %> </h1>
+
+<%= render partial: "layouts/errors", locals: { object: @link } %>
+
+<%= form_for @link, url: user_link_path(current_user, @link) do |f| %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>

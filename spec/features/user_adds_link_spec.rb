@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "User adds a link", type: :feature do
 
   let!(:user) { User.create(username: "Jai", password: "123") }
-  let!(:list) { Link.create(url: "http://link.com",
-                            title: "List1",
+  let!(:link) { Link.create(url: "http://link.com",
+                            title: "Link",
                             user_id: user.id) }
 
   before do

@@ -38,6 +38,7 @@
                         class: "btn btn-default",
                         remote: true %>
           <% end %>
+          <%= button_to "Edit", edit_user_link_path(current_user, link), method: :get, class: "btn btn-default" %>
         </div>
         <br/>
       <% end %>

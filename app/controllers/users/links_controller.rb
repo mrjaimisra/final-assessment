@@ -21,13 +21,17 @@ class Users::LinksController < Users::UsersController
     end
   end
 
+  def edit
+    @link = Link.find_by(id: params[:id])
+  end
+
   def update
     @link = current_link
     if current_link.update_attributes(link_params)
       redirect_to user_links_path(current_user)
     else
       flash.now[:danger] = "Update failed, please enter valid information"
-      render :edit
+      redirect_to edit_user_link_path(current_user, @link)
     end
   end
 

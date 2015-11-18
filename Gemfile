@@ -45,6 +45,7 @@ gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'rails_12factor'
 gem 'faker'
+gem 'best_in_place'
 
 
 group :production do
