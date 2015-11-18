@@ -29,7 +29,7 @@ RSpec.feature "User can sign in", type: :feature do
       click_link "Sign out"
     end
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(signin_path)
     expect(page).to have_link("Sign in")
 
     within(".navbar") do
