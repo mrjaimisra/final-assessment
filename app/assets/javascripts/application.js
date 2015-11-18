@@ -15,3 +15,42 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function () {
+  var id = window.location.pathname.split('/')[1];
+
+  $('.links').delegate('#makeUnread', 'click', function () {
+    var $link = $(this).closest('#link');
+    var statusButton = $link.find('#makeUnread');
+    var linkParams = { link: {status: true} };
+
+    $.ajax({
+      type: 'PATCH',
+      url: '/' + id + '/links/' + $link.find('a').attr('data-id') + '/read',
+      data: linkParams,
+      success: function () {
+        statusButton[0].innerHTML = "Make Read";
+        statusButton.attr('id','makeRead');
+        $link.find('a').removeClass('unread').addClass('read');
+      }
+    });
+  })
+
+    .delegate('#makeRead', 'click', function () {
+    console.log('click');
+    var $link = $(this).closest('#link');
+    var statusButton = $link.find('#makeRead');
+    var linkParams = { link: {status: false} };
+
+    $.ajax({
+      type: 'PATCH',
+      url: '/' + id + '/links/' + $link.find('a').attr('data-id') + '/unread',
+      data: linkParams,
+      success: function () {
+        statusButton[0].innerHTML = "Make Unread";
+        statusButton.attr('id','makeUnread');
+        $link.find('a').removeClass('read').addClass('unread');
+      }
+    });
+  });
+});
