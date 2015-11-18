@@ -1,0 +1,9 @@
+<%= render partial: "layouts/errors", locals: { object: @link } %>
+
+<%= form_for @link, url: user_links_path do |f| %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>
