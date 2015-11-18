@@ -1,0 +1,18 @@
+<h1>Sign up</h1>
+
+<div class="create-user-form">
+
+  <%= form_for(@user, url: signup_path) do |f| %>
+
+    <%= render partial: "layouts/errors", locals: {object: @user} %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username, placeholder: "Username" %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+    <br>
+    <%= f.submit "Create Account", class: "btn btn-primary" %>
+  <% end %>
+</div>

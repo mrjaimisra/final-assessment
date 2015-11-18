@@ -1,0 +1,19 @@
+<h1>All Links</h1>
+<!--<h3><%#= link_to "Add A New List", new_user_list_path(current_user) %> |-->
+  <!--<%#= link_to "Archived Lists", user_archived_lists_path(current_user) %>-->
+<!--</h3>-->
+
+<br/>
+<br/>
+
+<h3>
+  Links:
+</h3>
+
+<h4>
+  <div class="all-task-lists">
+    <% @links.map do |link| %>
+      <%= link_to link.title, user_link_path(current_user, link) %> <br/>
+    <% end %>
+  </div>
+</h4>

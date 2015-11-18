@@ -1,7 +1,110 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/helpers/users_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/controllers/users_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        5,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/controllers/welcome_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/models/user.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/controllers/users/links_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/controllers/users/users_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/mrjaimisra/Turing/Module4/final-assessment/app/models/link.rb": [
+        1,
+        1,
+        null
+      ]
     },
-    "timestamp": 1447864403
+    "timestamp": 1447868372
   }
 }
