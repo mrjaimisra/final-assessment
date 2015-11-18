@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default header-nav">
+  <div class="container">
+    <% if current_user %>
+      <%= current_user.username %> |
+      <%= link_to "All Lists", user_links_path(current_user) %> |
+      <%= link_to "Sign out", signout_path, method: :delete %>
+      <br/>
+    <% else %>
+      <%= link_to "Sign in", signin_path %> |
+      <%= link_to "Sign up", signup_path %>
+    <% end %>
+  </div>
+</nav>
