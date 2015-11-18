@@ -3,10 +3,10 @@
     <% if current_user %>
       <%= current_user.username %> |
       <%= link_to "All Lists", user_links_path(current_user) %> |
-      <%= link_to "Logout", logout_path, method: :delete %>
+      <%= link_to "Sign out", signout_path, method: :delete %>
       <br/>
     <% else %>
-      <%= link_to "Login", login_path %> |
+      <%= link_to "Sign in", signin_path %> |
       <%= link_to "Sign up", signup_path %>
     <% end %>
   </div>
