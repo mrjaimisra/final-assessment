@@ -3,13 +3,26 @@ class Users::LinksController < Users::UsersController
 
   def index
     @user = User.find_by(params[:id])
-    # @links = @user.links.where(status: false)
     @links = @user.links
+    @link = Link.new
+  end
+
+  def create
+    @user = User.find_by(params[:id])
+    @links = @user.links
+    @link = Link.new(link_params)
+    @link.user_id = current_user.id
+
+    if @link.save
+      redirect_to user_links_path(current_user)
+    else
+      render :index
+    end
   end
 
   private
 
-  def list_params
+  def link_params
     params.require(:link).permit(:url, :title, :user_id, :status)
   end
 
@@ -17,7 +30,7 @@ class Users::LinksController < Users::UsersController
     current_link.user_id == current_user.id
   end
 
-  def current_list
-    @current_list = List.find_by(id: params[:id])
+  def current_link
+    @current_link = List.find_by(id: params[:id])
   end
 end
