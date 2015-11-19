@@ -3,14 +3,13 @@ class Users::LinksController < Users::UsersController
   respond_to :html, :js
 
   def index
-    @user = User.find_by(params[:id])
-    @links = @user.links
-    @lists = @user.lists
+    @links = current_user.links
+    @lists = current_user.lists
     @link = Link.new
   end
   
   def create
-    @user = User.find_by(params[:id])
+    @user = current_user
     @links = @user.links
     @link = Link.new(link_params)
     @link.user_id = current_user.id
