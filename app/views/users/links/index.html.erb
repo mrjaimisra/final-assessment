@@ -43,7 +43,6 @@
 <br/>
 <br/>
 
-
 <h4>
   <div class="links">
     <% if @links %>
@@ -54,16 +53,17 @@
               <li><%= link_to link.title,
                               link.url,
                               data: {id: link.id},
-                              class: current_link_status(link) %>
+                              class: current_link_status(link),
+                              id: 'link'%>
                 <% if link.status %>
                   <%= link_to "Make Read", user_links_path(current_user),
-                              method: :patch,
+                              method: :get,
                               id: "makeRead",
                               class: "btn btn-default",
                               remote: true %>
                 <% else %>
                   <%= link_to "Make Unread", user_links_path(current_user),
-                              method: :patch,
+                              method: :get,
                               id: "makeUnread",
                               class: "btn btn-default",
                               remote: true %>

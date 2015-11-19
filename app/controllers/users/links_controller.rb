@@ -37,14 +37,14 @@ class Users::LinksController < Users::UsersController
   end
 
   def read
-    @link = Link.new
+    @link = current_link
     current_link.update_attribute(:status, true)
     current_link.save
     render :index
   end
 
   def unread
-    @link = Link.new
+    @link = current_link
     current_link.update_attribute(:status, false)
     current_link.save
     render :index
