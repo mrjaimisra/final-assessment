@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118181413) do
+ActiveRecord::Schema.define(version: 20151119033051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,17 @@ ActiveRecord::Schema.define(version: 20151118181413) do
     t.string  "title"
     t.boolean "status",  default: false
     t.integer "user_id"
+    t.integer "list_id", default: -1
   end
 
   add_index "links", ["user_id"], name: "index_links_on_user_id", using: :btree
+
+  create_table "lists", force: :cascade do |t|
+    t.string  "title"
+    t.integer "user_id"
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -31,4 +39,5 @@ ActiveRecord::Schema.define(version: 20151118181413) do
   end
 
   add_foreign_key "links", "users"
+  add_foreign_key "lists", "users"
 end

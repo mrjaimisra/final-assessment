@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
 
   namespace :users, path: ":user", as: :user do
+    resources :lists
     resources :links do
       member do
         patch "read"

@@ -1,0 +1,9 @@
+<h1>Add A New List</h1>
+
+<%= render partial: "layouts/errors", locals: { object: @list } %>
+
+<%= form_for @list, url: user_lists_path do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>

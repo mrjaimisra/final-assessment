@@ -5,6 +5,7 @@ class Users::LinksController < Users::UsersController
   def index
     @user = User.find_by(params[:id])
     @links = @user.links
+    @lists = @user.lists
     @link = Link.new
   end
   
@@ -52,7 +53,7 @@ class Users::LinksController < Users::UsersController
   private
 
   def link_params
-    params.require(:link).permit(:url, :title, :user_id, :status)
+    params.require(:link).permit(:url, :title, :user_id, :list_id, :status)
   end
 
   def authorized?

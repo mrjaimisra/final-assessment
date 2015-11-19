@@ -5,7 +5,14 @@
 <%= form_for @link, url: user_link_path(current_user, @link) do |f| %>
   <%= f.label :url %>
   <%= f.text_field :url %>
+<br>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <br>
+  <%= f.label :list_id %>
+  <%= f.collection_select(:list_id, List.all, :id, :title) %>
+
   <%= f.submit "Submit", class: "btn btn-default" %>
 <% end %>
+
+
