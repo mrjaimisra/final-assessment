@@ -1,0 +1,26 @@
+<%# app/views/links/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info links # provided by will_paginate %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th>Registered at</th>
+    </tr>
+    <% links.each do |link| %>
+      <tr>
+        <td><%= link_to(link.full_name, link_path(link)) %></td>
+        <td><%= link.email %></td>
+        <td><%= link.country_name %></td>
+        <td><%= link.decorated_created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate links # provided by will_paginate %>
