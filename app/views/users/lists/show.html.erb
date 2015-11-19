@@ -1,0 +1,8 @@
+<h1><%= @current_list.title %></h1>
+<%= link_to "Edit", edit_user_list_path(current_user, @current_list), class: "btn btn-default" %>
+<%= button_to "Delete", user_list_path(current_user, @current_list), method: :delete, confirm: "Delete this list?", class: "btn btn-default" %>
+<h4>
+  <% @current_list.links.map do |link| %>
+    <%= link_to link.title, link.url %>
+  <% end %>
+</h4>

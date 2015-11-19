@@ -1,0 +1,9 @@
+<h1>Edit <%= @current_list.title %> </h1>
+
+<%= render partial: "layouts/errors", locals: { object: @list } %>
+
+<%= form_for @list, url: user_list_path(current_user, @list) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>

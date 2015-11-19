@@ -12,13 +12,27 @@
 
 <%= render partial: "layouts/new_link_form", locals: {object: @link} %>
 
+
+<h3>Lists</h3>
+<%= link_to "Add A New List", new_user_list_path(current_user) %>
+
+<div class="lists">
+  <% if @lists %>
+    <% @lists.each do |list| %>
+      <ul id="">
+        <li><%= link_to list.title, user_list_path(current_user, list) %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
+
 <h3>
-  Links:
+  Un-Listed Links:
 </h3>
 
 <form id="live-search" action="" class="styled" method="post">
   <fieldset>
-    <input type="text" class="text-input" id="filter" value="" />
+    <input type="text" class="text-input" id="filter" value=""/>
     <span id="filter-count"></span>
   </fieldset>
 </form>
@@ -26,34 +40,40 @@
 <a href="" id="nameSort">Sort By Name</a>
 <a href="" id="statusSort">Sort By Status</a>
 
+<br/>
+<br/>
+
+
 <h4>
   <div class="links">
     <% if @links %>
       <% @links.map do |link| %>
-        <div id="linkList">
-          <ul id="linksLinksLinks">
-          <li><%= link_to link.title,
-                      link.url,
-                      data: {id: link.id},
-                      class: current_link_status(link)%>
-          <% if link.status %>
-            <%= link_to "Make Read", user_links_path(current_user),
-                        method: :patch,
-                        id: "makeRead",
-                        class: "btn btn-default",
-                        remote: true %>
-          <% else %>
-            <%= link_to "Make Unread", user_links_path(current_user),
-                        method: :patch,
-                        id: "makeUnread",
-                        class: "btn btn-default",
-                        remote: true %>
-          <% end %>
-          <%= button_to "Edit", edit_user_link_path(current_user, link), method: :get, class: "btn btn-default" %>
-          </li>
-          </ul>
-        </div>
-        <br/>
+        <% if link.list_id == -1 %>
+          <div id="linkList">
+            <ul id="linksLinksLinks">
+              <li><%= link_to link.title,
+                              link.url,
+                              data: {id: link.id},
+                              class: current_link_status(link) %>
+                <% if link.status %>
+                  <%= link_to "Make Read", user_links_path(current_user),
+                              method: :patch,
+                              id: "makeRead",
+                              class: "btn btn-default",
+                              remote: true %>
+                <% else %>
+                  <%= link_to "Make Unread", user_links_path(current_user),
+                              method: :patch,
+                              id: "makeUnread",
+                              class: "btn btn-default",
+                              remote: true %>
+                <% end %>
+                <%= button_to "Edit", edit_user_link_path(current_user, link), method: :get, class: "btn btn-default" %>
+              </li>
+            </ul>
+          </div>
+          <br/>
+        <% end %>
       <% end %>
     <% end %>
   </div>
