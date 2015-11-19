@@ -20,36 +20,41 @@ $(document).ready(function () {
   var id = window.location.pathname.split('/')[1];
 
   $('.links').delegate('#makeUnread', 'click', function () {
-    var $link = $(this).closest('#link');
-    var statusButton = $link.find('#makeUnread');
-    var linkParams = {link: {status: true}};
+    var statusButton = $(this);
+    var linkParams = {
+      link: {
+        id: $(this).parent().find('a').attr('data-id')
+      }
+    };
 
     $.ajax({
       type: 'PATCH',
-      url: '/' + id + '/links/' + $link.find('a').attr('data-id') + '/read',
+      url: '/' + id + '/links/' + $(this).parent().find('a').attr('data-id') + '/read',
       data: linkParams,
       success: function () {
+        statusButton.parent().find('a').removeClass('unread').addClass('read');
         statusButton[0].innerHTML = "Make Read";
         statusButton.attr('id', 'makeRead');
-        $link.find('a').removeClass('unread').addClass('read');
       }
     });
   })
 
     .delegate('#makeRead', 'click', function () {
-      console.log('click');
-      var $link = $(this).closest('#link');
-      var statusButton = $link.find('#makeRead');
-      var linkParams = {link: {status: false}};
+      var statusButton = $(this);
+      var linkParams = {
+        link: {
+          id: $(this).parent().find('a').attr('data-id')
+        }
+      };
 
       $.ajax({
         type: 'PATCH',
-        url: '/' + id + '/links/' + $link.find('a').attr('data-id') + '/unread',
+        url: '/' + id + '/links/' + $(this).parent().find('a').attr('data-id') + '/unread',
         data: linkParams,
         success: function () {
+          statusButton.parent().find('a').removeClass('read').addClass('unread');
           statusButton[0].innerHTML = "Make Unread";
           statusButton.attr('id', 'makeUnread');
-          $link.find('a').removeClass('read').addClass('unread');
         }
       });
     });
