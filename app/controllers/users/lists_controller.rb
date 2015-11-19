@@ -1,11 +1,6 @@
 class Users::ListsController < Users::UsersController
   before_action :current_list, :authorize!, except: [:index, :new, :create]
 
-  def index
-    @user = User.find_by(params[:url])
-    @lists = @user.lists.where(status: "unarchived")
-  end
-
   def show
     @list = current_list
   end

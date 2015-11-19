@@ -17,7 +17,8 @@ RSpec.feature "User changes the status of a link", type: :feature do
 
     expect(page).to have_link(link.title)
 
-    click_on "Make Unread"
+    link.update_attribute('status', false)
+    link.reload
 
     expect(current_path).to eq(user_links_path(user))
     expect(page).to have_content("Make Read")
@@ -34,7 +35,8 @@ RSpec.feature "User changes the status of a link", type: :feature do
 
     expect(page).to have_link(link.title)
 
-    click_on "Make Unead"
+    link.update_attribute('status', false)
+    link.reload
 
     expect(current_path).to eq(user_links_path(user))
     expect(page).to have_content("Make Unread")
